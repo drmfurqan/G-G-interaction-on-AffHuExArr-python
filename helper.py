@@ -11,7 +11,7 @@ def WriteToFile(filename, lineToWrite):
 
 
 
-def findGs(sequence, nt):
+def FindNTstack(sequence, nt):
     found = 0
     g_loc = 0
     for i in range(len(sequence)-3):

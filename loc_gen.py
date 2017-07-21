@@ -7,8 +7,8 @@ This script;
 
 """""""""""""""""""""""""""""""""""""""
 import time
-from probe  import Probe
-from helper import WriteToFile, findGs
+from   probe  import Probe
+from   helper import WriteToFile, FindNTstack, ProbeSetWithGstack
 
 def main(): 
     sequenceFile = "./../RAW_DATA/seq/seq.tab"
@@ -24,7 +24,7 @@ def main():
         for line in sequenceFile:
             if numberOfProbes > 0:
                 p_id, pset_id, p_x, p_y, assembly, seqname, start, stop, strand, p_seq, tar_std, cat = line.split()
-                pg_loc = findGs(p_seq,'G')                
+                pg_loc = FindNTstack(p_seq,'G')                
                 if pg_loc > 0 and cat.find("main") != -1 :
                     numberOfGstackProbes += 1 
                     probe = Probe(pset_id, p_x, p_y, cat)
@@ -43,8 +43,6 @@ def main():
     WriteToFile(outputPath + "ratio.txt", textToRatioFile)
 
     print("done processing ... ")
-
-
 
 
 if __name__ == "__main__":
