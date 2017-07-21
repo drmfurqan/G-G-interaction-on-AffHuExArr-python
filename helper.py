@@ -25,13 +25,19 @@ def FindNTstack(sequence, nt):
         return (g_loc + 1)
 
 def ProbeSetWithGstack(filename, outputFile = ""):
-    listofProbeSet = list()
+    listOfProbeSet = list()
     with open(filename, mode='r') as tempFile:
         for line in tempFile:
-            _, __, probeSetId = line.split()
-            listofProbeSet.append(probeSetId)
-    listofProbeSet = set(listofProbeSet)
-    return len(listofProbeSet)
+            *_, probeSetId = line.split()
+            listOfProbeSet.append(probeSetId)
+            
+    setOfProbeSet = set(listOfProbeSet)
+    if outputFile != "":
+        with open(outputFile, mode='a', encoding="utf-8") as outFile:
+            for item in setOfProbeSet:
+                outFile.write(item)
+
+    return len(setOfProbeSet)
         
 
 
