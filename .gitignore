@@ -1,6 +1,7 @@
 .vscode
-alt_pype0.py 
+alt_pype0.py
 one.txt
-script.py 
-test.py 
+script.py
+test.py
 *.pyc
+./__pycache__
